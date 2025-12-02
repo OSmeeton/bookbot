@@ -8,14 +8,28 @@ def get_book_text(path_to_file):
 #importing get_num_words which uses len on the string to get number of words
 from stats import get_num_words
 from stats import character_counter
+from stats import build_and_sort
 #main focuses on program flow: which file to read, and what to do with the result.
 
 def main():
     path_to_file = "books/frankenstein.txt"
     text = get_book_text(path_to_file)
     num_words = get_num_words(text)
-    print(f"Found {num_words} total words")
     char_counts = character_counter(text)
-    print(char_counts)
+    sorted_chars = build_and_sort(char_counts)
+    
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {path_to_file}...")
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
+    print("--------- Character Count -------")
+
+    for item in sorted_chars:
+        ch = item["char"]
+        num = item["num"]
+        if ch.isalpha():
+            print(f"{ch}: {num}")
+
+    print("============= END ===============")
 
 main()

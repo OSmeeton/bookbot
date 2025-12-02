@@ -14,3 +14,19 @@ def character_counter(letters):
         else:
             letter_dict[lower_letter] = 1
     return letter_dict
+
+#defining a function for sorting our report
+def sort_on(item):
+    return item["num"]
+
+def build_and_sort(letter_dict):
+    chars_list = []
+    for char, count in letter_dict.items():
+        char_dict = {"char": char, "num": count}
+        chars_list.append(char_dict)
+
+    chars_list.sort(reverse=True, key=sort_on)
+    return chars_list
+        
+
+
