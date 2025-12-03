@@ -1,3 +1,5 @@
+import sys
+
 #get_book_text focuses on reading a file and returning text.
 
 def get_book_text(path_to_file):
@@ -12,7 +14,12 @@ from stats import build_and_sort
 #main focuses on program flow: which file to read, and what to do with the result.
 
 def main():
-    path_to_file = "books/frankenstein.txt"
+    num_args = len(sys.argv)
+    if num_args != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path_to_file = sys.argv[1]
     text = get_book_text(path_to_file)
     num_words = get_num_words(text)
     char_counts = character_counter(text)
